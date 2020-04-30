@@ -145,7 +145,7 @@ def read_squad_data(raw_data, save_dir, is_training=True):
 def read_qa_examples(data_dir, corpus_type):
     assert corpus_type in ["train", "dev", "test"], "Unknown corpus type"
     examples = []
-    with open(os.path.join(data_dir, corpus_type +'.json'), 'r') as fr:
+    with open(os.path.join(data_dir, corpus_type +'.json'), 'r',encoding='utf-8') as fr:
         for i, data in enumerate(fr):
             data = json.loads(data.strip("\n"))
             example = InputExample(qas_id=data["qid"],
@@ -378,7 +378,7 @@ if __name__ == '__main__':
     #read_squad_data("data/test.json", "data/")
     examples = read_qa_examples("data/", "train")
     convert_examples_to_features(examples,
-                                 tokenizer=BertTokenizer("/home/jeramy/下载/Pretrain-Model-Pytorch/chinese_wwm_ex_bert/vocab.txt"),
+                                 tokenizer=BertTokenizer("../pretrained_model/Bert-wwm-ext/bert_vocab.txt"),
                                  max_seq_length=512,
                                  doc_stride=500,
                                  max_query_length=32,

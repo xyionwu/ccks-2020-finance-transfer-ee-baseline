@@ -4,6 +4,6 @@ from pytorch_pretrained_bert.tokenization import BertTokenizer
 from predict.predict import main
 
 if __name__ == "__main__":
-    read_squad_data("data/squad-like_all_data.json", "data/",is_training=False)
+    read_squad_data("data/squad_like_test.json", "data/",is_training=False)
     examples = read_qa_examples("data/", "test")
     main('data/')
